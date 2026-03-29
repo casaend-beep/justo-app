@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justo - Calculador de Lucro Real para Motoristas</title>
+    <style>
+        /* Estilo Geral */
+        :root {
+            --primary: #00e676;
+            --bg: #121212;
+            --card-bg: #1e1e1e;
+            --text: #ffffff;
+            --text-dim: #b0b0b0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            max-width: 800px;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 30px;
+        }
+
+        /* Botão Play Store */
+        .btn-download {
+            background-color: var(--primary);
+            color: #000;
+            padding: 18px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.2s, background 0.3s;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 230, 118, 0.3);
+        }
+
+        .btn-download:hover {
+            transform: scale(1.05);
+            background-color: #00c853;
+        }
+
+        /* Cards de Funcionalidades */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            transition: border-color 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            padding: 40px 20px;
+            text-align: center;
+            width: 100%;
+            border-top: 1px solid #222;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 0.9rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .copy {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        /* Responsividade para celulares */
+        @media (max-width: 600px) {
+            .logo { font-size: 2.5rem; }
+            h1 { font-size: 1.5rem; }
+            header { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">JUSTO</div>
+        <h1>Pare de aceitar corrida com prejuízo.</h1>
+        <p class="subtitle">O assistente automático que calcula o seu lucro líquido na Uber e 99 antes de você tocar no ecrã.</p>
+        
+        <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo&pcampaignid=web_share" class="btn-download">BAIXAR NA GOOGLE PLAY</a>
+    </header>
+
+    <section class="features">
+        <div class="card">
+            <h3>Cálculo Instantâneo</h3>
+            <p>Leitura automática da oferta de corrida. Você vê o ganho por KM e por Hora na hora!</p>
+        </div>
+        <div class="card">
+            <h3>Lucro Real</h3>
+            <p>Configura os teus custos de combustível e manutenção. O Justo mostra o que realmente sobra no bolso.</p>
+        </div>
+        <div class="card">
+            <h3>Sem Trocar de Tela</h3>
+            <p>O cálculo aparece como uma sobreposição leve. Você não sai do app da Uber ou 99.</p>
+        </div>
+    </section>
+
+    <footer>
+        <nav>
+            <a href="privacy.html">Política de Privacidade</a> | 
+            <a href="app-ads.txt">App-ads.txt</a>
+        </nav>
+        <p class="copy">&copy; 2026 Justo App - Desenvolvido para motoristas.</p>
+    </footer>
+
+</body>
+</html>
