@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade - Justo</title>
+    <style>
+        /* Sincronizado com o estilo do index.html */
+        :root {
+            --primary: #00e676;
+            --bg: #121212;
+            --card-bg: #1e1e1e;
+            --text: #ffffff;
+            --text-dim: #b0b0b0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+
+        .date {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+
+        p, li {
+            color: var(--text-dim);
+            font-size: 1rem;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        .contact-box {
+            background: #252525;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+            border-left: 4px solid var(--primary);
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Política de Privacidade</h1>
+        <span class="date">Última atualização: 19 de março de 2026</span>
+
+        <p>O <strong>Justo</strong> está comprometido em proteger a sua privacidade. Esta Política de Privacidade explica como lidamos com as informações ao usar nosso aplicativo.</p>
+
+        <h2>1. Coleta e Uso de Informações</h2>
+        <p>O Justo foi projetado para ser um utilitário de produtividade para motoristas de aplicativo. <strong>Não coletamos, armazenamos ou transmitimos dados pessoais para servidores externos.</strong></p>
+        
+        <ul>
+            <li><strong>Dados de Ofertas de Viagem:</strong> O app processa informações de texto (valor, distância e tempo) exibidas na tela de aplicativos de terceiros (como Uber e 99) exclusivamente para calcular a viabilidade financeira da corrida.</li>
+            <li><strong>Processamento Local:</strong> Todo o processamento de imagem (OCR) é feito localmente no seu dispositivo através do Google ML Kit. Nenhuma imagem da sua tela é salva ou enviada para nós.</li>
+        </ul>
+
+        <h2>2. Serviço de Acessibilidade (AccessibilityService API)</h2>
+        <p>O Justo utiliza o Serviço de Acessibilidade para:</p>
+        <ul>
+            <li>Identificar quando um aplicativo de transporte (Uber/99) está em primeiro plano.</li>
+            <li>Ler os dados das ofertas de viagem exibidas na tela para realizar cálculos automáticos (Ganhos por KM/Minuto).</li>
+        </ul>
+        <p><strong>Privacidade da API:</strong> Não utilizamos esta API para monitorar interações privadas, senhas ou dados bancários. O uso é restrito à leitura de ofertas de trabalho enquanto o motorista está em serviço.</p>
+
+        <h2>3. Permissões Requeridas</h2>
+        <ul>
+            <li><strong>Serviço de Acessibilidade:</strong> Necessário para automação e leitura de tela.</li>
+            <li><strong>Sobreposição de Tela (Display Over Other Apps):</strong> Necessário para exibir o botão flutuante com os cálculos sobre os apps de transporte.</li>
+            <li><strong>Armazenamento (Opcional):</strong> Apenas para salvar preferências locais de configuração.</li>
+        </ul>
+
+        <h2>4. Segurança de Dados</h2>
+        <p>Como não possuímos servidores de banco de dados para o usuário, não há risco de vazamento de dados de nossa parte. Suas configurações (como o status "Pro") são armazenadas localmente no sistema de preferências do Android.</p>
+
+        <h2>5. Links para Terceiros</h2>
+        <p>O Justo interage com aplicativos de terceiros (Uber, 99). Não temos controle sobre as políticas de privacidade desses aplicativos e recomendamos que você as leia separadamente.</p>
+
+        <div class="contact-box">
+            <h2>6. Contato</h2>
+            <p>Se você tiver dúvidas sobre esta política, entre em contato através do e-mail:<br>
+            <strong>casaend@gmail.com</strong></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Justo App | <a href="index.html">Voltar para o site</a></p>
+    </footer>
+
+</body>
+</html>
