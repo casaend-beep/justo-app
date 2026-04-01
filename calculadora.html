@@ -180,35 +180,7 @@
         <div class="ad-slot">ANÚNCIO GOOGLE ADSENSE (RODAPÉ)</div>
     </div>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Pega o nome do arquivo atual (ex: calculadora.html)
-        const currentPath = window.location.pathname.split("/").pop();
-        const navLinks = document.querySelectorAll('#main-nav a');
-        
-        let found = false;
-
-        navLinks.forEach(link => {
-            const linkPath = link.getAttribute('href');
-
-            // Verifica se o link termina com o nome da página atual
-            if (currentPath !== "" && linkPath === currentPath) {
-                link.classList.add('active');
-                found = true;
-            } 
-            // Caso especial para a Home (se o caminho for vazio ou index.html)
-            else if ((currentPath === "" || currentPath === "index.html") && linkPath === "index.html") {
-                link.classList.add('active');
-                found = true;
-            }
-        });
-
-        // Se por algum motivo não achar (ex: justoapp.com.br/), marca o Início como ativo
-        if (!found && navLinks[0]) {
-            navLinks[0].classList.add('active');
-        }
-    });
-    </script>
+    <script>document.getElementById('link-home').classList.add('active');</script>
 
     <script>
         function setMode(modo) {
