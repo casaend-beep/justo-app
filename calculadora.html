@@ -181,6 +181,24 @@
     </div>
 
     <script>
+    // Script para iluminar o link da página atual
+    (function() {
+        const currentPath = window.location.pathname.split("/").pop();
+        const navLinks = document.querySelectorAll('#main-nav a');
+        
+        navLinks.forEach(link => {
+            const linkPath = link.getAttribute('href');
+            // Se o caminho do link for igual à página atual, adiciona a classe 'active'
+            if (currentPath === linkPath || (currentPath === "" && linkPath === "index.html")) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    })();
+</script>
+
+    <script>
         function setMode(modo) {
             const secAlugado = document.getElementById('sec-alugado');
             const secProprio = document.getElementById('sec-proprio');
