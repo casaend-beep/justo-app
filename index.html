@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Justo - Calculador de Lucro Real para Motoristas</title>
     <style>
+        nav {
+        width: 100%;
+        background: #111;
+        border-bottom: 1px solid #333;
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        font-family: 'Segoe UI', sans-serif;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: 0.3s;
+    }
+    nav a:hover, nav a.active { color: #00E676; }
         /* Estilo Geral */
         :root {
             --primary: #00e676;
@@ -145,6 +168,13 @@
 </head>
 <body>
 
+    <nav>
+        <a href="index.html" class="active">Início</a>
+        <a href="calculadora.html">Calculadora</a>
+        <a href="politicas.html">Privacidade</a>
+        <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo&pcampaignid=web_share" target="_blank">Baixar App</a>
+    </nav>
+    
     <header>
         <div class="logo">JUSTO</div>
         <h1>Pare de aceitar corrida com prejuízo.</h1>
