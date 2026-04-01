@@ -25,7 +25,7 @@
             padding: 15px 0;
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 15px;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -33,83 +33,89 @@
         nav a {
             color: white;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px;
             transition: 0.3s;
         }
         nav a:hover, nav a.active { color: var(--neon-green); }
 
-        .container { width: 100%; max-width: 650px; padding: 20px; box-sizing: border-box; }
+        .container { width: 100%; max-width: 650px; padding: 15px; box-sizing: border-box; }
 
-        /* Card Principal */
         .card { 
-            margin-top: 30px;
-            margin-bottom: 30px;
+            margin-top: 20px;
+            margin-bottom: 20px;
             background: var(--card-bg); 
-            padding: 30px; border-radius: 20px; 
+            padding: 25px; border-radius: 20px; 
             border: 1px solid var(--neon-green); 
             box-shadow: 0 0 20px rgba(0, 230, 118, 0.1);
         }
 
-        h2 { color: var(--neon-green); text-align: center; margin: 0; text-transform: uppercase; font-size: 26px; }
-        .sub-header { text-align: center; color: #888; font-size: 14px; margin: 10px 0 30px 0; }
+        h2 { color: var(--neon-green); text-align: center; margin: 0; text-transform: uppercase; font-size: 24px; }
+        .sub-header { text-align: center; color: #888; font-size: 15px; margin: 10px 0 25px 0; }
 
-        .toggle-container { display: flex; gap: 10px; margin-bottom: 30px; }
+        .toggle-container { display: flex; gap: 10px; margin-bottom: 25px; }
         .toggle-btn { 
-            flex: 1; padding: 15px; border: 1px solid #333; border-radius: 10px; 
+            flex: 1; padding: 14px; border: 1px solid #333; border-radius: 10px; 
             background: #1a1a1a; color: white; cursor: pointer; font-weight: bold; font-size: 14px;
         }
         .toggle-btn.active { border-color: var(--neon-green); color: var(--neon-green); background: rgba(0, 230, 118, 0.05); }
 
-        .grid-campos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .form-group { display: flex; flex-direction: column; }
+        .grid-campos { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .form-group { display: flex; flex-direction: column; margin-bottom: 5px; }
         .full-width { grid-column: span 2; }
 
-        label { color: var(--neon-green); font-size: 11px; font-weight: bold; text-transform: uppercase; margin-bottom: 8px; }
+        /* Aumento de fonte nos Labels */
+        label { color: var(--neon-green); font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
         
         .input-wrapper { position: relative; display: flex; align-items: center; }
+        
+        /* Ajuste de altura e fonte nos Inputs */
         input { 
-            width: 100%; background: var(--input-bg); border: 1px solid #333; padding: 14px; 
-            border-radius: 8px; color: white; font-size: 16px; outline: none; box-sizing: border-box;
+            width: 100%; background: var(--input-bg); border: 1px solid #333; padding: 16px; 
+            border-radius: 10px; color: white; font-size: 18px; outline: none; box-sizing: border-box;
+            appearance: none;
         }
-        input:focus { border-color: var(--neon-green); }
-        .unit { position: absolute; right: 15px; color: #666; font-size: 13px; }
+        input:focus { border-color: var(--neon-green); background: #252525; }
+        .unit { position: absolute; right: 15px; color: #777; font-size: 14px; pointer-events: none; }
 
-        /* Estilo dos Textos de Auxílio */
-        .tip { font-size: 10px; color: #777; margin-top: 6px; font-style: italic; line-height: 1.3; }
+        /* Textos de Auxílio maiores para Mobile */
+        .tip { font-size: 12px; color: #888; margin-top: 7px; font-style: italic; line-height: 1.4; }
 
         .btn-calcular { 
             width: 100%; background: var(--neon-green); color: black; border: none; 
-            padding: 20px; border-radius: 10px; font-weight: bold; font-size: 18px; 
+            padding: 20px; border-radius: 12px; font-weight: bold; font-size: 18px; 
             cursor: pointer; margin-top: 25px; text-transform: uppercase;
         }
 
         .resultado-box { 
             display: none; background: #000; border: 1px solid #333; 
-            margin-top: 25px; padding: 25px; border-radius: 12px; text-align: center;
+            margin-top: 25px; padding: 25px; border-radius: 15px; text-align: center;
         }
-        .res-grid { display: flex; justify-content: space-around; margin-bottom: 20px; }
-        .res-val { color: var(--neon-green); font-size: 32px; font-weight: bold; display: block; }
-        .res-label { font-size: 11px; color: #888; text-transform: uppercase; margin-bottom: 5px; }
+        .res-grid { display: flex; justify-content: space-around; margin-bottom: 20px; gap: 10px; }
+        .res-val { color: var(--neon-green); font-size: 28px; font-weight: bold; display: block; }
+        .res-label { font-size: 12px; color: #aaa; text-transform: uppercase; margin-bottom: 5px; }
 
-        /* Estilo da Chamada para o App */
         .cta-app {
-            display: none;
-            border-top: 1px solid #222;
-            padding-top: 20px;
-            text-align: center;
+            display: none; border-top: 1px solid #222;
+            padding-top: 20px; text-align: center;
         }
-        .cta-text { font-size: 16px; font-weight: bold; margin-bottom: 15px; display: block; }
+        .cta-text { font-size: 16px; font-weight: bold; margin-bottom: 15px; display: block; color: #fff; }
         .btn-app { 
-            display: inline-block; background: white; color: black; text-decoration: none;
-            padding: 12px 25px; border-radius: 50px; font-weight: bold; font-size: 14px;
-            transition: 0.3s;
+            display: inline-block; background: #fff; color: #000; text-decoration: none;
+            padding: 15px 30px; border-radius: 50px; font-weight: bold; font-size: 15px;
+            transition: 0.3s; box-shadow: 0 4px 15px rgba(255,255,255,0.1);
         }
-        .btn-app:hover { background: var(--neon-green); transform: scale(1.05); }
 
-        @media (max-width: 500px) { .grid-campos { grid-template-columns: 1fr; } .full-width { grid-column: span 1; } }
+        /* MEDIA QUERY PARA MOBILE */
+        @media (max-width: 500px) { 
+            .grid-campos { grid-template-columns: 1fr; gap: 20px; } 
+            .full-width { grid-column: span 1; }
+            h2 { font-size: 22px; }
+            input { padding: 18px; font-size: 18px; } /* Inputs maiores para facilitar toque */
+            nav { gap: 10px; }
+            nav a { font-size: 11px; }
+        }
     </style>
 </head>
 <body>
@@ -118,7 +124,7 @@
         <a href="index.html">Início</a>
         <a href="calculadora.html" class="active">Calculadora</a>
         <a href="privacy.html">Privacidade</a>
-        <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo" target="_blank">Baixar App</a>
+        <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo" target="_blank">App</a>
     </nav>
 
     <div class="container">
@@ -127,7 +133,7 @@
 
         <div class="card">
             <h2>Custos Operacionais</h2>
-            <p class="sub-header">Preencha os campos para ajustar o seu App Justo.</p>
+            <p class="sub-header">Ajuste os valores para o seu App Justo.</p>
 
             <div class="toggle-container">
                 <button id="btn-alugado" class="toggle-btn active" onclick="setMode('alugado')">Carro Alugado</button>
@@ -138,49 +144,47 @@
                 <div class="form-group">
                     <label>⏲️ KM Rodado/Dia</label>
                     <div class="input-wrapper"><input type="number" id="km-dia" value="200"><span class="unit">km</span></div>
-                    <span class="tip">Média de quilômetros que você roda por dia de trabalho.</span>
+                    <span class="tip">Quanto você roda por dia.</span>
                 </div>
                 <div class="form-group">
                     <label>⌛ Horas Online/Dia</label>
                     <div class="input-wrapper"><input type="number" id="horas-dia" value="12"><span class="unit">h</span></div>
-                    <span class="tip">Tempo total que você permanece disponível nos aplicativos.</span>
+                    <span class="tip">Tempo disponível nos apps.</span>
                 </div>
                 <div class="form-group">
                     <label>⛽ Preço Combustível</label>
                     <div class="input-wrapper"><input type="number" id="p-comb" value="5.79" step="0.01"><span class="unit">R$/L</span></div>
-                    <span class="tip">Valor atual pago no litro do combustível ou m³ do GNV.</span>
+                    <span class="tip">Valor pago no litro/m³.</span>
                 </div>
                 <div class="form-group">
                     <label>🚗 Consumo</label>
                     <div class="input-wrapper"><input type="number" id="consumo" value="10"><span class="unit">km/L</span></div>
-                    <span class="tip">Média de consumo do seu veículo em ambiente urbano.</span>
+                    <span class="tip">Média de consumo urbano.</span>
                 </div>
 
                 <div id="sec-alugado" class="grid-campos full-width">
                     <div class="form-group">
                         <label>📋 Aluguel Semanal</label>
                         <div class="input-wrapper"><input type="number" id="aluguel-v" value="600"><span class="unit">R$</span></div>
-                        <span class="tip">O valor total da locação pago por semana.</span>
                     </div>
                     <div class="form-group">
                         <label>📅 Dias Trab/Sem</label>
                         <input type="number" id="dias-semana-a" value="6">
-                        <span class="tip">Quantidade de dias que você trabalha na semana.</span>
                     </div>
                 </div>
 
                 <div id="sec-proprio" class="grid-campos full-width" style="display: none;">
-                    <div class="form-group"><label>📋 Prestação</label><input type="number" id="prestacao" value="400"><span class="tip">Valor mensal da parcela do veículo (ou zero).</span></div>
-                    <div class="form-group"><label>🛡️ Seguro Mensal</label><input type="number" id="seguro" value="250"><span class="tip">Custo mensal do seguro do carro.</span></div>
-                    <div class="form-group"><label>⚙️ IPVA Mensal</label><input type="number" id="ipva" value="150"><span class="tip">IPVA e Licenciamento divididos por 12.</span></div>
-                    <div class="form-group"><label>🔧 Manutenção</label><input type="number" id="manut-v" value="200"><span class="tip">Reserva mensal para óleo, pneus e revisões.</span></div>
-                    <div class="form-group"><label>📅 Dias/Mês</label><input type="number" id="dias-mes-p" value="24"><span class="tip">Total de dias trabalhados no mês.</span></div>
+                    <div class="form-group"><label>📋 Prestação</label><input type="number" id="prestacao" value="400"></div>
+                    <div class="form-group"><label>🛡️ Seguro Mensal</label><input type="number" id="seguro" value="250"></div>
+                    <div class="form-group"><label>⚙️ IPVA Mensal</label><input type="number" id="ipva" value="150"></div>
+                    <div class="form-group"><label>🔧 Manutenção</label><input type="number" id="manut-v" value="200"></div>
+                    <div class="form-group"><label>📅 Dias/Mês</label><input type="number" id="dias-mes-p" value="24"></div>
                 </div>
 
                 <div class="form-group full-width">
                     <label>🥪 Alimentação + Celular</label>
                     <div class="input-wrapper"><input type="number" id="extra-mes" value="300"><span class="unit">R$/mês</span></div>
-                    <span class="tip">Gastos mensais extras relacionados ao trabalho.</span>
+                    <span class="tip">Gastos mensais extras de trabalho.</span>
                 </div>
             </div>
 
@@ -249,15 +253,12 @@
 
             const cHora = custoFixoDiario / hDia;
             
-            // Exibição com vírgula para o padrão brasileiro
             document.getElementById('res-km').innerText = "R$ " + cKm.toFixed(2).replace('.', ',');
             document.getElementById('res-hora').innerText = "R$ " + cHora.toFixed(2).replace('.', ',');
             
-            // Mostra o resultado e o CTA
             document.getElementById('resultado').style.display = 'block';
             document.getElementById('cta-app').style.display = 'block';
 
-            // Scroll suave para o resultado
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
     </script>
