@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Custo Real - Justo App</title>
+    <style>
+        :root { --neon-green: #00E676; --dark-bg: #121212; --card-bg: #1e1e1e; }
+        body { background-color: var(--dark-bg); color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        
+        /* Espaço para Ads */
+        .ad-slot { background: #252525; margin: 15px 0; text-align: center; color: #555; padding: 10px; border: 1px dashed #444; border-radius: 8px; font-size: 12px; }
+
+        .card { background: var(--card-bg); padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #333; }
+        h1 { color: var(--neon-green); text-align: center; font-size: 24px; }
+        
+        .toggle-group { display: flex; background: #252525; border-radius: 10px; padding: 5px; margin-bottom: 25px; }
+        .toggle-btn { flex: 1; padding: 12px; border: none; border-radius: 8px; background: none; color: white; cursor: pointer; transition: 0.3s; }
+        .toggle-btn.active { background: var(--neon-green); color: black; font-weight: bold; }
+
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #bbb; font-size: 14px; }
+        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #444; background: #2a2a2a; color: white; box-sizing: border-box; font-size: 16px; }
+        
+        .result-box { background: #2a2a2a; border-radius: 15px; padding: 20px; margin-top: 25px; border-left: 5px solid var(--neon-green); display: none; }
+        .result-title { font-size: 14px; color: #aaa; margin-bottom: 10px; }
+        .result-value { font-size: 28px; font-weight: bold; color: var(--neon-green); }
+        
+        button#calc-btn { background: var(--neon-green); color: black; border: none; padding: 18px; width: 100%; border-radius: 12px; font-weight: bold; font-size: 18px; cursor: pointer; margin-top: 20px; }
+        .helper-text { font-size: 11px; color: #777; margin-top: 4px; display: block; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="ad-slot">Espaço para Anúncio AdSense (Horizontal)</div>
+
+    <div class="card">
+        <h1>💰 Calculadora de Custos</h1>
+        
+        <div class="toggle-group">
+            <button class="toggle-btn active" onclick="setMode('proprio', this)">🏠 Carro Próprio</button>
+            <button class="toggle-btn" onclick="setMode('alugado', this)">🔑 Carro Alugado</button>
+        </div>
+
+        <div class="form-group">
+            <label>Preço do Combustível (Litro/m³):</label>
+            <input type="number" id="input-preco" placeholder="Ex: 5.89" step="0.01">
+        </div>
+
+        <div class="form-group">
+            <label>Consumo Médio (KM/L ou KM/m³):</label>
+            <input type="number" id="input-consumo" placeholder="Ex: 10">
+        </div>
+
+        <div id="campos-alugado" style="display: none;">
+            <div class="form-group">
+                <label>Valor da Locação (Semanal):</label>
+                <input type="number" id="input-aluguel" placeholder="Ex: 600.00">
+            </div>
+            <div class="form-group">
+                <label>Horas que trabalha por semana:</label>
+                <input type="number" id="input-horas" placeholder="Ex: 60">
+                <small class="helper-text">Ex: 6 dias x 10 horas = 60h</small>
+            </div>
+        </div>
+
+        <div id="campos-proprio">
+            <div class="form-group">
+                <label>Manutenção e Pneus (por KM):</label>
+                <input type="number" id="input-manut" value="0.15" step="0.01">
+                <small class="helper-text">Recomendado: 0.15 (Troca de óleo, pneus e revisões)</small>
+            </div>
+            <div class="form-group">
+                <label>Seguro e IPVA (Mensal):</label>
+                <input type="number" id="input-fixo" placeholder="Ex: 300.00">
+            </div>
+        </div>
+
+        <button id="calc-btn" onclick="calcular()">CALCULAR LUCRO REAL</button>
+
+        <div id="resultado" class="result-box">
+            <div class="result-title">Configure estes valores no seu App Justo:</div>
+            <div style="margin-bottom: 15px;">
+                <span style="display:block; font-size: 12px; color: #999;">CUSTO POR KM</span>
+                <span class="result-value" id="res-km">R$ 0,00</span>
+            </div>
+            <div>
+                <span style="display:block; font-size: 12px; color: #999;">CUSTO POR HORA</span>
+                <span class="result-value" id="res-hora">R$ 0,00</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="ad-slot">Espaço para Anúncio AdSense (Responsivo)</div>
+</div>
+
+<script>
+    let modoAtual = 'proprio';
+
+    function setMode(modo, btn) {
+        modoAtual = modo;
+        document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        document.getElementById('campos-proprio').style.display = modo === 'proprio' ? 'block' : 'none';
+        document.getElementById('campos-alugado').style.display = modo === 'alugado' ? 'block' : 'none';
+        document.getElementById('resultado').style.display = 'none';
+    }
+
+    function calcular() {
+        const preco = parseFloat(document.getElementById('input-preco').value) || 0;
+        const consumo = parseFloat(document.getElementById('input-consumo').value) || 1;
+        const custoCombustivel = preco / consumo;
+        
+        let custoKm = 0;
+        let custoHora = 0;
+
+        if(modoAtual === 'alugado') {
+            const aluguel = parseFloat(document.getElementById('input-aluguel').value) || 0;
+            const horas = parseFloat(document.getElementById('input-horas').value) || 1;
+            
+            custoKm = custoCombustivel + 0.05; // Pequena reserva de limpeza/pneu extra
+            custoHora = aluguel / horas;
+        } else {
+            const manut = parseFloat(document.getElementById('input-manut').value) || 0;
+            const fixoMensal = parseFloat(document.getElementById('input-fixo').value) || 0;
+            
+            custoKm = custoCombustivel + manut + 0.10; // +10 centavos de depreciação média
+            custoHora = fixoMensal / 200; // Média de 200h trabalhadas/mês
+        }
+
+        document.getElementById('res-km').innerText = "R$ " + custoKm.toFixed(2);
+        document.getElementById('res-hora').innerText = "R$ " + custoHora.toFixed(2);
+        document.getElementById('resultado').style.display = 'block';
+        
+        // Scroll suave para o resultado
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
