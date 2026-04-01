@@ -3,48 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Custo Real - Justo App</title>
+    <title>Calculadora Justo - Lucro Real</title>
     <style>
-        :root { --neon-green: #00E676; --dark-bg: #121212; --card-bg: #ffffff; --input-border: #e0e0e0; }
-        body { background-color: #f5f5f5; color: #333; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px; }
-        .container { max-width: 600px; margin: auto; }
+        :root { --neon-green: #00E676; --bg: #f8f9fa; --card: #ffffff; }
+        body { background-color: var(--bg); color: #333; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 15px; }
+        .container { max-width: 500px; margin: auto; }
+        .card { background: var(--card); padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         
-        .card { background: var(--card-bg); padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        
-        /* Estilo dos Botões de Perfil (Conforme Imagem) */
-        .toggle-group { display: flex; background: #f0f0f0; border-radius: 8px; padding: 4px; margin-bottom: 25px; }
-        .toggle-btn { flex: 1; padding: 10px; border: none; border-radius: 6px; background: none; color: #666; cursor: pointer; font-weight: 500; transition: 0.3s; }
-        .toggle-btn.active { background: #ffffff; color: #000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        /* Seletor de Perfil */
+        .toggle-group { display: flex; background: #eee; border-radius: 10px; padding: 5px; margin-bottom: 20px; }
+        .toggle-btn { flex: 1; padding: 12px; border: none; border-radius: 8px; background: none; cursor: pointer; font-weight: bold; color: #666; }
+        .toggle-btn.active { background: white; color: black; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
-        /* Grid de Campos */
-        .grid-campos { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .form-group { margin-bottom: 15px; position: relative; }
+        /* Grid igual às imagens */
+        .grid-campos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
+        .form-group { display: flex; flex-direction: column; }
+        label { font-size: 13px; color: #555; margin-bottom: 5px; font-weight: 500; }
         
-        label { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; color: #666; font-size: 14px; }
-        .input-wrapper { position: relative; display: flex; align-items: center; }
+        .input-box { position: relative; display: flex; align-items: center; }
+        .prefix { position: absolute; left: 10px; color: #888; font-size: 14px; }
+        .unit { position: absolute; right: 10px; color: #888; font-size: 14px; }
         
-        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--input-border); background: #fff; color: #333; font-size: 16px; outline: none; }
+        input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; box-sizing: border-box; outline: none; }
+        input.has-prefix { padding-left: 30px; }
         input:focus { border-color: var(--neon-green); }
-        
-        /* Unidades dentro do input (km, h, L) */
-        .unit { position: absolute; right: 12px; color: #999; font-size: 14px; pointer-events: none; }
-        .prefix { position: absolute; left: 12px; color: #999; font-size: 14px; pointer-events: none; }
-        .has-prefix { padding-left: 35px; }
 
-        button#calc-btn { background: #000; color: #fff; border: none; padding: 18px; width: 100%; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 20px; }
+        button#calc-btn { background: #000; color: #fff; border: none; padding: 16px; width: 100%; border-radius: 10px; font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 10px; }
         
         /* Resultado */
-        .result-box { background: #f9f9f9; border-radius: 10px; padding: 20px; margin-top: 20px; border-left: 5px solid var(--neon-green); display: none; }
-        .res-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: bold; }
-        .res-val { color: var(--neon-green); font-size: 18px; }
+        .result-box { background: #f0fff4; border: 1px solid var(--neon-green); border-radius: 10px; padding: 15px; margin-top: 20px; display: none; }
+        .res-line { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: bold; }
+        .res-val { color: #2e7d32; font-size: 18px; }
         
-        .ad-slot { background: #eee; text-align: center; padding: 15px; margin: 15px 0; border-radius: 8px; font-size: 12px; color: #999; }
+        .ad-placeholder { background: #f1f1f1; text-align: center; padding: 15px; margin: 15px 0; border-radius: 8px; color: #999; font-size: 12px; border: 1px dashed #ccc; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="ad-slot">ANÚNCIO ADSENSE</div>
+    <div class="ad-placeholder">ESPAÇO PARA ANÚNCIO (ADSENSE)</div>
 
     <div class="card">
         <div class="toggle-group">
@@ -55,74 +52,76 @@
         <div class="grid-campos">
             <div class="form-group">
                 <label>⏲️ KM Rodado no Dia</label>
-                <div class="input-wrapper">
+                <div class="input-box">
                     <input type="number" id="km-dia" value="200">
                     <span class="unit">km</span>
                 </div>
             </div>
             <div class="form-group">
                 <label>⌛ Horas Trabalhadas</label>
-                <div class="input-wrapper">
+                <div class="input-box">
                     <input type="number" id="horas-dia" value="12">
                     <span class="unit">h</span>
                 </div>
             </div>
-
             <div class="form-group">
                 <label>⛽ Preço Combustível</label>
-                <div class="input-wrapper">
+                <div class="input-box">
                     <span class="prefix">R$</span>
                     <input type="number" id="p-comb" class="has-prefix" value="5.79" step="0.01">
-                    <span class="unit">/ L</span>
                 </div>
             </div>
             <div class="form-group">
                 <label>🚗 Consumo do Veículo</label>
-                <div class="input-wrapper">
+                <div class="input-box">
                     <input type="number" id="consumo" value="10">
                     <span class="unit">km/L</span>
                 </div>
             </div>
+        </div>
 
-            <div id="campos-alugado" class="grid-campos" style="grid-column: span 2; display: grid;">
+        <div id="section-alugado">
+            <div class="grid-campos">
                 <div class="form-group">
                     <label>📋 Aluguel Semanal</label>
-                    <div class="input-wrapper">
+                    <div class="input-box">
                         <span class="prefix">R$</span>
                         <input type="number" id="aluguel-v" class="has-prefix" value="600">
                     </div>
                 </div>
                 <div class="form-group">
                     <label>📅 Dias Trab./Semana</label>
-                    <input type="number" id="dias-semana" value="6">
+                    <input type="number" id="dias-semana-a" value="6">
                 </div>
             </div>
+        </div>
 
-            <div id="campos-proprio" class="grid-campos" style="grid-column: span 2; display: none;">
+        <div id="section-proprio" style="display: none;">
+            <div class="grid-campos">
                 <div class="form-group">
-                    <label>📋 Prestação/Reserva Mensal</label>
-                    <div class="input-wrapper">
+                    <label>📋 Prestação Mensal</label>
+                    <div class="input-box">
                         <span class="prefix">R$</span>
                         <input type="number" id="prestacao" class="has-prefix" value="400">
                     </div>
                 </div>
                 <div class="form-group">
                     <label>🛡️ Seguro Mensal</label>
-                    <div class="input-wrapper">
+                    <div class="input-box">
                         <span class="prefix">R$</span>
                         <input type="number" id="seguro" class="has-prefix" value="250">
                     </div>
                 </div>
                 <div class="form-group">
                     <label>⚙️ IPVA Mensal</label>
-                    <div class="input-wrapper">
+                    <div class="input-box">
                         <span class="prefix">R$</span>
                         <input type="number" id="ipva" class="has-prefix" value="150">
                     </div>
                 </div>
                 <div class="form-group">
                     <label>🔧 Manutenção Mensal</label>
-                    <div class="input-wrapper">
+                    <div class="input-box">
                         <span class="prefix">R$</span>
                         <input type="number" id="manut-v" class="has-prefix" value="200">
                     </div>
@@ -138,9 +137,9 @@
             </div>
         </div>
 
-        <div style="margin-top: 10px;">
+        <div class="form-group" style="margin-top: 10px;">
             <label>🥪 Alimentação + Celular (Mensal)</label>
-            <div class="input-wrapper">
+            <div class="input-box">
                 <span class="prefix">R$</span>
                 <input type="number" id="extra-mes" class="has-prefix" value="300">
             </div>
@@ -149,17 +148,13 @@
         <button id="calc-btn" onclick="calcular()">CALCULAR AGORA</button>
 
         <div id="resultado" class="result-box">
-            <div class="res-row"><span>Custo por KM:</span> <span class="res-val" id="res-km">R$ 0,00</span></div>
-            <div class="res-row"><span>Custo por Hora:</span> <span class="res-val" id="res-hora">R$ 0,00</span></div>
-            <hr style="border: 0; border-top: 1px solid #ddd; margin: 10px 0;">
-            <div class="res-row" style="color: #555; font-size: 14px;">
-                <span>Seu custo fixo diário é:</span>
-                <span id="res-dia">R$ 0,00</span>
+            <div class="res-line"><span>Custo por KM:</span> <span class="res-val" id="res-km">R$ 0,00</span></div>
+            <div class="res-line"><span>Custo por Hora:</span> <span class="res-val" id="res-hora">R$ 0,00</span></div>
+            <div style="font-size: 12px; color: #666; margin-top: 10px; border-top: 1px solid #ddd; pt-5;">
+                *Use estes valores nas configurações do seu App Justo.
             </div>
         </div>
     </div>
-
-    <div class="ad-slot">ANÚNCIO ADSENSE</div>
 </div>
 
 <script>
@@ -169,8 +164,8 @@
         modo = m;
         document.getElementById('btn-alugado').classList.toggle('active', m === 'alugado');
         document.getElementById('btn-proprio').classList.toggle('active', m === 'proprio');
-        document.getElementById('campos-alugado').style.display = m === 'alugado' ? 'grid' : 'none';
-        document.getElementById('campos-proprio').style.display = m === 'proprio' ? 'grid' : 'none';
+        document.getElementById('section-alugado').style.display = m === 'alugado' ? 'block' : 'none';
+        document.getElementById('section-proprio').style.display = m === 'proprio' ? 'block' : 'none';
         document.getElementById('resultado').style.display = 'none';
     }
 
@@ -181,12 +176,12 @@
         const hDia = parseFloat(document.getElementById('horas-dia').value) || 1;
         
         let custoFixoDiario = 0;
-        let custoCombustivelKm = pComb / cons;
+        let custoPorKm = pComb / cons; // Custo combustível
 
         if (modo === 'alugado') {
             const vAluguel = parseFloat(document.getElementById('aluguel-v').value) || 0;
-            const dSemana = parseFloat(document.getElementById('dias-semana').value) || 1;
-            // Diária do aluguel + Diária dos extras (celular/comida)
+            const dSemana = parseFloat(document.getElementById('dias-semana-a').value) || 1;
+            // Diária do aluguel + Diária dos extras
             custoFixoDiario = (vAluguel / dSemana) + (extraMes / 24);
         } else {
             const prest = parseFloat(document.getElementById('prestacao').value) || 0;
@@ -196,19 +191,13 @@
             const dMes = parseFloat(document.getElementById('dias-mes-p').value) || 1;
             
             custoFixoDiario = (prest + seg + ipva + manut + extraMes) / dMes;
+            custoPorKm += 0.05; // Pequena reserva de depreciação/pneu p/ carro próprio
         }
 
-        const kmDia = parseFloat(document.getElementById('km-dia').value) || 1;
-        
-        // O Custo por KM final que o App precisa:
-        const kmFinal = custoCombustivelKm + (modo === 'proprio' ? 0.05 : 0.02); // Reserva técnica
-        
-        // O Custo por Hora que o App precisa:
         const horaFinal = custoFixoDiario / hDia;
 
-        document.getElementById('res-km').innerText = "R$ " + kmFinal.toFixed(2);
+        document.getElementById('res-km').innerText = "R$ " + custoPorKm.toFixed(2);
         document.getElementById('res-hora').innerText = "R$ " + horaFinal.toFixed(2);
-        document.getElementById('res-dia').innerText = "R$ " + custoFixoDiario.toFixed(2);
         document.getElementById('resultado').style.display = 'block';
     }
 </script>
