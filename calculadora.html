@@ -11,11 +11,36 @@
             background-color: var(--bg-black); 
             color: white; 
             font-family: 'Segoe UI', Roboto, sans-serif; 
-            margin: 0; padding: 20px; 
+            margin: 0; padding: 0; 
             display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh;
         }
 
-        .container { width: 100%; max-width: 650px; }
+        /* MENU DE NAVEGAÇÃO */
+        nav {
+            width: 100%;
+            background: #111;
+            border-bottom: 1px solid #333;
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        nav a:hover, nav a.active { color: var(--neon-green); }
+
+        .container { width: 100%; max-width: 650px; padding: 20px; box-sizing: border-box; }
 
         /* Card Principal */
         .card { 
@@ -28,7 +53,7 @@
         h2 { color: var(--neon-green); text-align: center; margin: 0; text-transform: uppercase; font-size: 26px; }
         .sub-header { text-align: center; color: #888; font-size: 14px; margin: 10px 0 30px 0; }
 
-        /* Botões de Alternância (Corrigidos) */
+        /* Alternância */
         .toggle-container { display: flex; gap: 10px; margin-bottom: 30px; }
         .toggle-btn { 
             flex: 1; padding: 15px; border: 1px solid #333; border-radius: 10px; 
@@ -36,12 +61,12 @@
         }
         .toggle-btn.active { border-color: var(--neon-green); color: var(--neon-green); background: rgba(0, 230, 118, 0.05); }
 
-        /* Grid de Campos */
+        /* Grid */
         .grid-campos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .form-group { display: flex; flex-direction: column; margin-bottom: 5px; }
+        .form-group { display: flex; flex-direction: column; }
         .full-width { grid-column: span 2; }
 
-        label { color: var(--neon-green); font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 5px; }
+        label { color: var(--neon-green); font-size: 11px; font-weight: bold; text-transform: uppercase; margin-bottom: 8px; }
         
         .input-wrapper { position: relative; display: flex; align-items: center; }
         input { 
@@ -49,39 +74,45 @@
             border-radius: 8px; color: white; font-size: 16px; outline: none; box-sizing: border-box;
         }
         input:focus { border-color: var(--neon-green); }
-        .unit { position: absolute; right: 15px; color: #666; font-size: 14px; }
+        .unit { position: absolute; right: 15px; color: #666; font-size: 13px; }
 
-        .tip { font-size: 11px; color: #666; margin-top: 5px; font-style: italic; }
+        .tip { font-size: 10px; color: #555; margin-top: 5px; font-style: italic; }
 
-        /* Botão Calcular */
         .btn-calcular { 
             width: 100%; background: var(--neon-green); color: black; border: none; 
             padding: 20px; border-radius: 10px; font-weight: bold; font-size: 18px; 
-            cursor: pointer; margin-top: 20px; text-transform: uppercase;
+            cursor: pointer; margin-top: 25px; text-transform: uppercase;
         }
 
         /* Resultado */
         .resultado-box { 
             display: none; background: #000; border: 1px solid #333; 
-            margin-top: 25px; padding: 20px; border-radius: 12px; text-align: center;
+            margin-top: 25px; padding: 25px; border-radius: 12px; text-align: center;
         }
         .res-grid { display: flex; justify-content: space-around; }
-        .res-val { color: var(--neon-green); font-size: 28px; font-weight: bold; display: block; }
+        .res-val { color: var(--neon-green); font-size: 32px; font-weight: bold; display: block; }
         .res-label { font-size: 11px; color: #888; text-transform: uppercase; margin-bottom: 5px; }
 
-        .ad-slot { background: #111; border: 1px dashed #333; padding: 15px; margin-bottom: 15px; text-align: center; color: #444; font-size: 12px; border-radius: 10px; }
+        /* Espaços para Anúncios */
+        .ad-slot { background: #111; border: 1px dashed #222; padding: 15px; margin: 20px 0; text-align: center; color: #444; font-size: 11px; border-radius: 10px; width: 100%; }
 
         @media (max-width: 500px) { .grid-campos { grid-template-columns: 1fr; } .full-width { grid-column: span 1; } }
     </style>
 </head>
 <body>
 
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="calculadora.html" class="active">Calculadora</a>
+        <a href="https://justoapp.com.br" target="_blank">Baixar App</a>
+    </nav>
+
     <div class="container">
-        <div class="ad-slot">ANÚNCIO GOOGLE ADSENSE</div>
+        <div class="ad-slot">ANÚNCIO GOOGLE ADSENSE (TOPO)</div>
 
         <div class="card">
             <h2>Custos Operacionais</h2>
-            <p class="sub-header">Ajuste os valores para o seu perfil e use no App Justo.</p>
+            <p class="sub-header">Preencha os campos para ajustar o seu App Justo.</p>
 
             <div class="toggle-container">
                 <button id="btn-alugado" class="toggle-btn active" onclick="setMode('alugado')">Carro Alugado</button>
@@ -92,99 +123,79 @@
                 <div class="form-group">
                     <label>⏲️ KM Rodado/Dia</label>
                     <div class="input-wrapper"><input type="number" id="km-dia" value="200"><span class="unit">km</span></div>
-                    <span class="tip">Sua média de rodagem por turno.</span>
+                    <span class="tip">Média de rodagem diária.</span>
                 </div>
                 <div class="form-group">
                     <label>⌛ Horas Online/Dia</label>
                     <div class="input-wrapper"><input type="number" id="horas-dia" value="12"><span class="unit">h</span></div>
-                    <span class="tip">Tempo total de trabalho.</span>
+                    <span class="tip">Tempo total conectado.</span>
                 </div>
                 <div class="form-group">
                     <label>⛽ Preço Combustível</label>
                     <div class="input-wrapper"><input type="number" id="p-comb" value="5.79" step="0.01"><span class="unit">R$/L</span></div>
-                    <span class="tip">Valor atual pago na bomba.</span>
                 </div>
                 <div class="form-group">
                     <label>🚗 Consumo</label>
                     <div class="input-wrapper"><input type="number" id="consumo" value="10"><span class="unit">km/L</span></div>
-                    <span class="tip">Média de consumo no trânsito.</span>
                 </div>
 
-                <div id="sec-alugado" class="grid-campos full-width" style="display: grid;">
+                <div id="sec-alugado" class="grid-campos full-width">
                     <div class="form-group">
                         <label>📋 Aluguel Semanal</label>
                         <div class="input-wrapper"><input type="number" id="aluguel-v" value="600"><span class="unit">R$</span></div>
-                        <span class="tip">Valor fixo pago à locadora.</span>
                     </div>
                     <div class="form-group">
                         <label>📅 Dias Trab/Sem</label>
-                        <div class="input-wrapper"><input type="number" id="dias-semana-a" value="6"></div>
-                        <span class="tip">Dias que trabalha por semana.</span>
+                        <input type="number" id="dias-semana-a" value="6">
                     </div>
                 </div>
 
                 <div id="sec-proprio" class="grid-campos full-width" style="display: none;">
-                    <div class="form-group">
-                        <label>📋 Prestação/Reserva</label>
-                        <div class="input-wrapper"><input type="number" id="prestacao" value="400"><span class="unit">R$</span></div>
-                    </div>
-                    <div class="form-group">
-                        <label>🛡️ Seguro Mensal</label>
-                        <div class="input-wrapper"><input type="number" id="seguro" value="250"><span class="unit">R$</span></div>
-                    </div>
-                    <div class="form-group">
-                        <label>⚙️ IPVA Mensal</label>
-                        <div class="input-wrapper"><input type="number" id="ipva" value="150"><span class="unit">R$</span></div>
-                    </div>
-                    <div class="form-group">
-                        <label>🔧 Manutenção Mensal</label>
-                        <div class="input-wrapper"><input type="number" id="manut-v" value="200"><span class="unit">R$</span></div>
-                    </div>
-                    <div class="form-group">
-                        <label>📅 Dias Trab/Semana</label>
-                        <input type="number" id="dias-semana-p" value="6">
-                    </div>
-                    <div class="form-group">
-                        <label>📅 Dias Trab/Mês</label>
-                        <input type="number" id="dias-mes-p" value="24">
-                    </div>
+                    <div class="form-group"><label>📋 Prestação</label><input type="number" id="prestacao" value="400"></div>
+                    <div class="form-group"><label>🛡️ Seguro Mensal</label><input type="number" id="seguro" value="250"></div>
+                    <div class="form-group"><label>⚙️ IPVA Mensal</label><input type="number" id="ipva" value="150"></div>
+                    <div class="form-group"><label>🔧 Manutenção</label><input type="number" id="manut-v" value="200"></div>
+                    <div class="form-group"><label>📅 Dias/Mês</label><input type="number" id="dias-mes-p" value="24"></div>
                 </div>
 
                 <div class="form-group full-width">
                     <label>🥪 Alimentação + Celular</label>
                     <div class="input-wrapper"><input type="number" id="extra-mes" value="300"><span class="unit">R$/mês</span></div>
-                    <span class="tip">Gastos mensais com dados e refeições na rua.</span>
+                    <span class="tip">Gastos fixos mensais com trabalho.</span>
                 </div>
             </div>
 
-            <button class="btn-calcular" onclick="calcular()">Calcular Lucro Real</button>
+            <button class="btn-calcular" onclick="calcular()">Calcular Agora</button>
 
             <div id="resultado" class="resultado-box">
                 <div class="res-grid">
                     <div><span class="res-label">Custo KM</span><span class="res-val" id="res-km">R$ 0,00</span></div>
                     <div><span class="res-label">Custo Hora</span><span class="res-val" id="res-hora">R$ 0,00</span></div>
                 </div>
+                <p style="font-size: 11px; color: #555; margin-top: 15px;">Configure estes valores no menu "Custo Real" do seu App Justo.</p>
             </div>
         </div>
+
+        <div class="ad-slot">ANÚNCIO GOOGLE ADSENSE (RODAPÉ)</div>
     </div>
 
     <script>
         function setMode(modo) {
-            const btnAlugado = document.getElementById('btn-alugado');
-            const btnProprio = document.getElementById('btn-proprio');
             const secAlugado = document.getElementById('sec-alugado');
             const secProprio = document.getElementById('sec-proprio');
+            const btnAlugado = document.getElementById('btn-alugado');
+            const btnProprio = document.getElementById('btn-proprio');
 
             if (modo === 'alugado') {
-                btnAlugado.classList.add('active');
-                btnProprio.classList.remove('active');
                 secAlugado.style.display = 'grid';
                 secProprio.style.display = 'none';
+                btnAlugado.classList.add('active');
+                btnProprio.classList.remove('active');
             } else {
+                secAlugado.style.display = 'none';
+                secProprio.style.display = 'grid';
                 btnProprio.classList.add('active');
                 btnAlugado.classList.remove('active');
-                secProprio.style.display = 'grid';
-                secAlugado.style.display = 'none';
             }
             document.getElementById('resultado').style.display = 'none';
         }
@@ -206,19 +217,3 @@
             } else {
                 const prest = parseFloat(document.getElementById('prestacao').value) || 0;
                 const seg = parseFloat(document.getElementById('seguro').value) || 0;
-                const ipva = parseFloat(document.getElementById('ipva').value) || 0;
-                const manut = parseFloat(document.getElementById('manut-v').value) || 0;
-                const dMes = parseFloat(document.getElementById('dias-mes-p').value) || 1;
-                custoFixoDiario = (prest + seg + ipva + manut + extraMes) / dMes;
-                cKm += 0.05; // Reserva técnica
-            }
-
-            const cHora = custoFixoDiario / hDia;
-
-            document.getElementById('res-km').innerText = "R$ " + cKm.toFixed(2);
-            document.getElementById('res-hora').innerText = "R$ " + cHora.toFixed(2);
-            document.getElementById('resultado').style.display = 'block';
-        }
-    </script>
-</body>
-</html>
