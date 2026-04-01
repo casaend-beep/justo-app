@@ -77,7 +77,8 @@
         input:focus { border-color: var(--neon-green); }
         .unit { position: absolute; right: 15px; color: #666; font-size: 13px; }
 
-        .tip { font-size: 10px; color: #555; margin-top: 5px; font-style: italic; }
+        /* Estilo dos Textos de Auxílio */
+        .tip { font-size: 10px; color: #777; margin-top: 6px; font-style: italic; line-height: 1.3; }
 
         .btn-calcular { 
             width: 100%; background: var(--neon-green); color: black; border: none; 
@@ -89,9 +90,24 @@
             display: none; background: #000; border: 1px solid #333; 
             margin-top: 25px; padding: 25px; border-radius: 12px; text-align: center;
         }
-        .res-grid { display: flex; justify-content: space-around; }
+        .res-grid { display: flex; justify-content: space-around; margin-bottom: 20px; }
         .res-val { color: var(--neon-green); font-size: 32px; font-weight: bold; display: block; }
         .res-label { font-size: 11px; color: #888; text-transform: uppercase; margin-bottom: 5px; }
+
+        /* Estilo da Chamada para o App */
+        .cta-app {
+            display: none;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+            text-align: center;
+        }
+        .cta-text { font-size: 16px; font-weight: bold; margin-bottom: 15px; display: block; }
+        .btn-app { 
+            display: inline-block; background: white; color: black; text-decoration: none;
+            padding: 12px 25px; border-radius: 50px; font-weight: bold; font-size: 14px;
+            transition: 0.3s;
+        }
+        .btn-app:hover { background: var(--neon-green); transform: scale(1.05); }
 
         @media (max-width: 500px) { .grid-campos { grid-template-columns: 1fr; } .full-width { grid-column: span 1; } }
     </style>
@@ -122,42 +138,49 @@
                 <div class="form-group">
                     <label>⏲️ KM Rodado/Dia</label>
                     <div class="input-wrapper"><input type="number" id="km-dia" value="200"><span class="unit">km</span></div>
+                    <span class="tip">Média de quilômetros que você roda por dia de trabalho.</span>
                 </div>
                 <div class="form-group">
                     <label>⌛ Horas Online/Dia</label>
                     <div class="input-wrapper"><input type="number" id="horas-dia" value="12"><span class="unit">h</span></div>
+                    <span class="tip">Tempo total que você permanece disponível nos aplicativos.</span>
                 </div>
                 <div class="form-group">
                     <label>⛽ Preço Combustível</label>
                     <div class="input-wrapper"><input type="number" id="p-comb" value="5.79" step="0.01"><span class="unit">R$/L</span></div>
+                    <span class="tip">Valor atual pago no litro do combustível ou m³ do GNV.</span>
                 </div>
                 <div class="form-group">
                     <label>🚗 Consumo</label>
                     <div class="input-wrapper"><input type="number" id="consumo" value="10"><span class="unit">km/L</span></div>
+                    <span class="tip">Média de consumo do seu veículo em ambiente urbano.</span>
                 </div>
 
                 <div id="sec-alugado" class="grid-campos full-width">
                     <div class="form-group">
                         <label>📋 Aluguel Semanal</label>
                         <div class="input-wrapper"><input type="number" id="aluguel-v" value="600"><span class="unit">R$</span></div>
+                        <span class="tip">O valor total da locação pago por semana.</span>
                     </div>
                     <div class="form-group">
                         <label>📅 Dias Trab/Sem</label>
                         <input type="number" id="dias-semana-a" value="6">
+                        <span class="tip">Quantidade de dias que você trabalha na semana.</span>
                     </div>
                 </div>
 
                 <div id="sec-proprio" class="grid-campos full-width" style="display: none;">
-                    <div class="form-group"><label>📋 Prestação</label><input type="number" id="prestacao" value="400"></div>
-                    <div class="form-group"><label>🛡️ Seguro Mensal</label><input type="number" id="seguro" value="250"></div>
-                    <div class="form-group"><label>⚙️ IPVA Mensal</label><input type="number" id="ipva" value="150"></div>
-                    <div class="form-group"><label>🔧 Manutenção</label><input type="number" id="manut-v" value="200"></div>
-                    <div class="form-group"><label>📅 Dias/Mês</label><input type="number" id="dias-mes-p" value="24"></div>
+                    <div class="form-group"><label>📋 Prestação</label><input type="number" id="prestacao" value="400"><span class="tip">Valor mensal da parcela do veículo (ou zero).</span></div>
+                    <div class="form-group"><label>🛡️ Seguro Mensal</label><input type="number" id="seguro" value="250"><span class="tip">Custo mensal do seguro do carro.</span></div>
+                    <div class="form-group"><label>⚙️ IPVA Mensal</label><input type="number" id="ipva" value="150"><span class="tip">IPVA e Licenciamento divididos por 12.</span></div>
+                    <div class="form-group"><label>🔧 Manutenção</label><input type="number" id="manut-v" value="200"><span class="tip">Reserva mensal para óleo, pneus e revisões.</span></div>
+                    <div class="form-group"><label>📅 Dias/Mês</label><input type="number" id="dias-mes-p" value="24"><span class="tip">Total de dias trabalhados no mês.</span></div>
                 </div>
 
                 <div class="form-group full-width">
                     <label>🥪 Alimentação + Celular</label>
                     <div class="input-wrapper"><input type="number" id="extra-mes" value="300"><span class="unit">R$/mês</span></div>
+                    <span class="tip">Gastos mensais extras relacionados ao trabalho.</span>
                 </div>
             </div>
 
@@ -167,6 +190,11 @@
                 <div class="res-grid">
                     <div><span class="res-label">Custo KM</span><span class="res-val" id="res-km">R$ 0,00</span></div>
                     <div><span class="res-label">Custo Hora</span><span class="res-val" id="res-hora">R$ 0,00</span></div>
+                </div>
+
+                <div id="cta-app" class="cta-app">
+                    <span class="cta-text">Não perca dinheiro, trabalhe pelo Justo!</span>
+                    <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo" class="btn-app" target="_blank">📲 BAIXAR APP AGORA</a>
                 </div>
             </div>
         </div>
@@ -220,9 +248,17 @@
             }
 
             const cHora = custoFixoDiario / hDia;
-            document.getElementById('res-km').innerText = "R$ " + cKm.toFixed(2);
-            document.getElementById('res-hora').innerText = "R$ " + cHora.toFixed(2);
+            
+            // Exibição com vírgula para o padrão brasileiro
+            document.getElementById('res-km').innerText = "R$ " + cKm.toFixed(2).replace('.', ',');
+            document.getElementById('res-hora').innerText = "R$ " + cHora.toFixed(2).replace('.', ',');
+            
+            // Mostra o resultado e o CTA
             document.getElementById('resultado').style.display = 'block';
+            document.getElementById('cta-app').style.display = 'block';
+
+            // Scroll suave para o resultado
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
     </script>
 </body>
