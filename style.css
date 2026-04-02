@@ -234,5 +234,28 @@ body {
 
 @media (max-width: 600px) {
     .grid-campos { grid-template-columns: 1fr; }
+    
     .full-width { grid-column: span 1; }
+    
+    .navbar {
+        padding: 10px 3%; /* Diminui o respiro lateral para ganhar espaço */
+    }
+
+    .logo {
+        font-size: 1.2rem; /* Diminui levemente a logo se necessário */
+    }
+
+    .nav-links {
+        gap: 8px; /* Reduz o espaço entre os links no mobile */
+    }
+
+    .nav-links a {
+        font-size: 0.85rem; /* Diminui um pouco a fonte dos links */
+    }
+
+    .btn-baixar, .btn-download {
+        padding: 8px 12px !important; /* Botão mais compacto no mobile */
+        font-size: 0.8rem !important;
+        white-space: nowrap; /* Garante que o texto do botão não quebre */
+    }
 }
