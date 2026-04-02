@@ -41,7 +41,7 @@ body {
 .nav-links a:hover { color: var(--verde-justo); }
 
 .btn-baixar { background: var(--verde-justo); color: #000 !important; padding: 8px 18px; border-radius: 8px; font-weight: bold; }
-.menu-active{ color: var(--verde-justo)}
+.menu-active{ color: var(--dourado-pro) !important;}
 
 /* Hero Section */
 .hero { text-align: center; padding: 60px 0; }
