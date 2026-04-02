@@ -18,9 +18,21 @@ body {
     background-color: var(--fundo-escuro);
     color: var(--texto-claro);
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* Menu Superior (Navbar) */
+/* Container para centralizar o conteúdo das páginas */
+.main-container {
+    flex: 1;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Menu Superior */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -28,9 +40,6 @@ body {
     padding: 1rem 5%;
     background-color: var(--card-escuro);
     border-bottom: 2px solid var(--verde-justo);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
 .logo {
@@ -43,20 +52,15 @@ body {
 .nav-links {
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 
 .nav-links a {
     color: var(--texto-claro);
     text-decoration: none;
     font-weight: 500;
-    transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: var(--verde-justo);
-}
-
-/* Botão de Download no Menu */
 .btn-download {
     background-color: var(--verde-justo);
     color: black !important;
@@ -65,25 +69,33 @@ body {
     font-weight: bold;
 }
 
-/* Responsividade para Celular */
-@media (max-width: 600px) {
-    .navbar {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-    .nav-links {
-        font-size: 0.9rem;
-        gap: 10px;
-    }
+/* Estilização básica para textos e botões das páginas */
+h1 { color: var(--verde-justo); margin-bottom: 20px; }
+h2 { margin-top: 30px; margin-bottom: 15px; }
+p { margin-bottom: 15px; color: var(--texto-cinza); }
+
+.button-primary {
+    display: inline-block;
+    background-color: var(--verde-justo);
+    color: black;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
-/* Rodapé */
+/* Responsividade */
+@media (max-width: 600px) {
+    .navbar { flex-direction: column; gap: 15px; padding: 15px; }
+    .nav-links { font-size: 0.9rem; flex-wrap: wrap; justify-content: center; }
+}
+
 footer {
     text-align: center;
     padding: 2rem;
-    margin-top: 3rem;
     background-color: var(--card-escuro);
     color: var(--texto-cinza);
     font-size: 0.8rem;
+    margin-top: auto;
 }
