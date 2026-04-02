@@ -1,11 +1,58 @@
 /* Configurações Globais */
+/* Variáveis de Cor Adicionais */
 :root {
     --verde-justo: #00ff88;
+    --dourado-pro: #ffcc00;
     --fundo-escuro: #121212;
-    --card-escuro: #1e1e1e;
+    --card-escuro: #1a1a1a;
     --texto-claro: #ffffff;
     --texto-cinza: #b3b3b3;
 }
+
+/* Estilo dos Cards de Plano */
+.plan-card {
+    flex: 1;
+    min-width: 280px;
+    padding: 30px;
+    border-radius: 15px;
+    background: var(--card-escuro);
+    border: 1px solid #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Variação Verde (Free) */
+.plan-free {
+    border-top: 5px solid var(--verde-justo);
+}
+
+/* Variação Dourada (Pro) */
+.plan-pro {
+    border: 2px solid var(--dourado-pro);
+    box-shadow: 0 10px 20px rgba(255, 204, 0, 0.1);
+}
+
+.plan-pro h3 {
+    color: var(--dourado-pro) !important;
+}
+
+.plan-pro .btn-pro {
+    background-color: var(--dourado-pro);
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.check-icon { color: var(--verde-justo); margin-right: 8px; }
+.rocket-icon { color: var(--dourado-pro); margin-right: 8px; }
 
 * {
     box-sizing: border-box;
