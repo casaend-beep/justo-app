@@ -6,7 +6,7 @@
     
     <title>Calculadora Justo - Custos Operacionais por KM e Hora</title>
     <meta name="description" content="Calcule o custo real por KM e por hora para motoristas de aplicativo. Configure seu App Justo com precisão e aumente seus ganhos.">
-    <meta name="keywords" content="calculadora motorista, custo por km, uber, 99, custo operacionais, app justo, ganhos motorista">
+    <meta name="keywords" content="calculadora motorista, custo por km, uber, 99, custo operacionais, app justo, ganhos motorista, lucro real uber">
     <meta name="author" content="Justo App">
     <link rel="canonical" href="https://justoapp.com.br/calculadora.html">
     <link rel="icon" type="image/png" href="favicon.png">
@@ -14,7 +14,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://justoapp.com.br/calculadora.html">
     <meta property="og:title" content="Calculadora de Custos Operacionais - Justo App">
-    <meta property="og:description" content="Descubra quanto você realmente gasta por KM rodado. A ferramenta essencial para motoristas Uber e 99.">
+    <meta property="og:description" content="Descubra quanto você realmente gasta por KM rodado na Uber e 99. A ferramenta essencial para o lucro real.">
     <meta property="og:image" content="https://justoapp.com.br/preview-share.png">
 
     <meta name="twitter:card" content="summary_large_image">
@@ -32,7 +32,7 @@
         <a href="index.html" class="logo">JUSTO</a>
         <div class="nav-links">
             <a href="index.html">Home</a>
-            <a href="calculadora.html" class="menu-selected">Calculadora</a>
+            <a href="calculadora.html">Calculadora</a>
             <a href="privacy.html">Privacidade</a>
             <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo" class="btn-baixar">Baixar App</a>
         </div>
@@ -43,8 +43,8 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
         <div class="plan-card" style="margin-top: 30px;">
-            <h2>Custos Operacionais</h2>
-            <p class="sub-header">Descubra seu custo real e configure seu App Justo para trabalhar com inteligência.</p>
+            <h2>Calculadora de Custos Operacionais</h2>
+            <p class="sub-header">Ajuste os valores para configurar seu <strong>Lucro Real</strong> no App Justo.</p>
 
             <div class="toggle-container">
                 <button id="btn-alugado" class="toggle-btn active" onclick="setMode('alugado')">Carro Alugado</button>
@@ -55,43 +55,69 @@
                 <div class="form-group">
                     <label>⏲️ KM Rodado/Dia</label>
                     <div class="input-wrapper"><input type="number" id="km-dia" value="200"><span class="unit">km</span></div>
+                    <span class="tip">Média de quilometragem total que você roda por dia de trabalho.</span>
                 </div>
                 <div class="form-group">
                     <label>⌛ Horas Online/Dia</label>
                     <div class="input-wrapper"><input type="number" id="horas-dia" value="12"><span class="unit">h</span></div>
+                    <span class="tip">Tempo médio que você permanece disponível nos apps Uber e 99.</span>
                 </div>
                 <div class="form-group">
                     <label>⛽ Preço Combustível</label>
                     <div class="input-wrapper"><input type="number" id="p-comb" value="5.79" step="0.01"><span class="unit">R$/L</span></div>
+                    <span class="tip">Valor atual do litro da gasolina, álcool ou m³ do GNV.</span>
                 </div>
                 <div class="form-group">
-                    <label>🚗 Consumo Média</label>
+                    <label>🚗 Consumo</label>
                     <div class="input-wrapper"><input type="number" id="consumo" value="10"><span class="unit">km/L</span></div>
+                    <span class="tip">Quantos KM seu carro faz por litro no ciclo urbano.</span>
                 </div>
 
                 <div id="sec-alugado" class="grid-campos full-width">
                     <div class="form-group">
-                        <label>📋 Valor Aluguel Semanal</label>
+                        <label>📋 Aluguel Semanal</label>
                         <div class="input-wrapper"><input type="number" id="aluguel-v" value="600"><span class="unit">R$</span></div>
+                        <span class="tip">Valor total pago semanalmente à locadora.</span>
                     </div>
                     <div class="form-group">
-                        <label>📅 Dias Trabalhados/Sem</label>
+                        <label>📅 Dias Trab/Sem</label>
                         <div class="input-wrapper"><input type="number" id="dias-semana-a" value="6"><span class="unit">dias</span></div>
+                        <span class="tip">Quantidade de dias que você realmente trabalha por semana.</span>
                     </div>
                 </div>
 
                 <div id="sec-proprio" class="grid-campos full-width" style="display: none;">
-                    <div class="form-group"><label>📋 Parcela Carro</label><div class="input-wrapper"><input type="number" id="prestacao" value="400"></div></div>
-                    <div class="form-group"><label>🛡️ Seguro/Mês</label><div class="input-wrapper"><input type="number" id="seguro" value="250"></div></div>
-                    <div class="form-group"><label>⚙️ IPVA/Mês</label><div class="input-wrapper"><input type="number" id="ipva" value="150"></div></div>
-                    <div class="form-group"><label>🔧 Manutenção/Mês</label><div class="input-wrapper"><input type="number" id="manut-v" value="200"></div></div>
-                    <div class="form-group full-width"><label>📅 Dias Trabalhados no Mês</label><div class="input-wrapper"><input type="number" id="dias-mes-p" value="24"></div></div>
+                    <div class="form-group">
+                        <label>📋 Prestação</label>
+                        <div class="input-wrapper"><input type="number" id="prestacao" value="400"></div>
+                        <span class="tip">Valor mensal da parcela do financiamento.</span>
+                    </div>
+                    <div class="form-group">
+                        <label>🛡️ Seguro Mensal</label>
+                        <div class="input-wrapper"><input type="number" id="seguro" value="250"></div>
+                        <span class="tip">Custo do seguro dividido por 12 meses.</span>
+                    </div>
+                    <div class="form-group">
+                        <label>⚙️ IPVA Mensal</label>
+                        <div class="input-wrapper"><input type="number" id="ipva" value="150"></div>
+                        <span class="tip">Valor do IPVA + taxas anuais dividido por 12.</span>
+                    </div>
+                    <div class="form-group">
+                        <label>🔧 Manutenção</label>
+                        <div class="input-wrapper"><input type="number" id="manut-v" value="200"></div>
+                        <span class="tip">Reserva para pneus, óleo e desgaste mecânico mensal.</span>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>📅 Dias Trabalhados/Mês</label>
+                        <div class="input-wrapper"><input type="number" id="dias-mes-p" value="24"></div>
+                        <span class="tip">Total de dias rodados no mês para diluir o custo fixo.</span>
+                    </div>
                 </div>
 
                 <div class="form-group full-width">
-                    <label>🥪 Alimentação + Celular + Internet</label>
+                    <label>🥪 Alimentação + Celular</label>
                     <div class="input-wrapper"><input type="number" id="extra-mes" value="300"><span class="unit">R$/mês</span></div>
-                    <span class="tip">Gastos mensais fixos com o trabalho.</span>
+                    <span class="tip">Gastos essenciais de internet e alimentação durante o trabalho.</span>
                 </div>
             </div>
 
@@ -99,18 +125,12 @@
 
             <div id="resultado" class="resultado-box">
                 <div class="res-grid">
-                    <div>
-                        <span class="res-label">Custo por KM</span>
-                        <span class="res-val" id="res-km">R$ 0,00</span>
-                    </div>
-                    <div>
-                        <span class="res-label">Custo por Hora</span>
-                        <span class="res-val" id="res-hora">R$ 0,00</span>
-                    </div>
+                    <div><span class="res-label">Custo por KM</span><span class="res-val" id="res-km">R$ 0,00</span></div>
+                    <div><span class="res-label">Custo por Hora</span><span class="res-val" id="res-hora">R$ 0,00</span></div>
                 </div>
 
                 <div id="cta-app" class="cta-app" style="text-align: center;">
-                    <p style="margin-bottom: 10px;">Configure esses valores no seu App Justo para o lucro real.</p>
+                    <p style="margin-bottom: 15px; color: var(--cinza);">Evite prejuízos na Uber e 99: use esses valores no seu Justo.</p>
                     <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo" class="btn-baixar" style="text-decoration: none; display: inline-block;">📲 BAIXAR APP JUSTO</a>
                 </div>
             </div>
@@ -125,13 +145,11 @@
     </footer>
 
     <script>
-        // Mantive sua lógica original de cálculo intacta
         function setMode(modo) {
             const secAlugado = document.getElementById('sec-alugado');
             const secProprio = document.getElementById('sec-proprio');
             const btnAlugado = document.getElementById('btn-alugado');
             const btnProprio = document.getElementById('btn-proprio');
-
             if (modo === 'alugado') {
                 secAlugado.style.display = 'grid';
                 secProprio.style.display = 'none';
@@ -152,10 +170,8 @@
             const extraMes = parseFloat(document.getElementById('extra-mes').value) || 0;
             const hDia = parseFloat(document.getElementById('horas-dia').value) || 1;
             const modo = document.getElementById('btn-alugado').classList.contains('active') ? 'alugado' : 'proprio';
-            
             let custoFixoDiario = 0;
             let cKm = pComb / cons;
-
             if (modo === 'alugado') {
                 const vAlug = parseFloat(document.getElementById('aluguel-v').value) || 0;
                 const dSem = parseFloat(document.getElementById('dias-semana-a').value) || 1;
@@ -168,14 +184,10 @@
                 const dMes = parseFloat(document.getElementById('dias-mes-p').value) || 1;
                 custoFixoDiario = (prest + seg + ipva + manut + extraMes) / dMes;
             }
-
             const cHora = custoFixoDiario / hDia;
-            
             document.getElementById('res-km').innerText = "R$ " + cKm.toFixed(2).replace('.', ',');
             document.getElementById('res-hora').innerText = "R$ " + cHora.toFixed(2).replace('.', ',');
-            
             document.getElementById('resultado').style.display = 'block';
-            
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
     </script>
