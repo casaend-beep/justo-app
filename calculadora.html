@@ -3,50 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Calculadora Justo - Custos Operacionais por KM e Hora</title>
     <meta name="description" content="Calcule o custo real por KM e por hora para motoristas de aplicativo. Configure seu App Justo com precisão e aumente seus ganhos.">
     <meta name="keywords" content="calculadora motorista, custo por km, uber, 99, custo operacionais, app justo, ganhos motorista">
     <meta name="author" content="Justo App">
     <link rel="canonical" href="https://justoapp.com.br/calculadora.html">
-
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://justoapp.com.br/calculadora.html">
     <meta property="og:title" content="Calculadora de Custos Operacionais - Justo App">
     <meta property="og:description" content="Descubra quanto você realmente gasta por KM rodado. A ferramenta essencial para motoristas Uber e 99.">
     <meta property="og:image" content="https://justoapp.com.br/preview-share.png">
-    <meta property="og:locale" content="pt_BR">
 
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://justoapp.com.br/calculadora.html">
-    <meta property="twitter:title" content="Calculadora de Custos Operacionais - Justo App">
-    <meta property="twitter:description" content="Calcule seu custo real e configure seu App Justo para lucrar mais.">
-    <meta property="twitter:image" content="https://justoapp.com.br/preview-share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://justoapp.com.br/calculadora.html">
+    <meta name="twitter:title" content="Calculadora de Custos Operacionais - Justo App">
+    <meta name="twitter:description" content="Calcule seu custo real e configure seu App Justo para lucrar mais.">
+    <meta name="twitter:image" content="https://justoapp.com.br/preview-share.png">
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3294798474176428" crossorigin="anonymous"></script>
-    <title>Calculadora Justo - Custos Operacionais</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav class="navbar">
-    <a href="index.html" class="logo">JUSTO</a>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="calculadora.html">Calculadora</a>
-        <a href="privacy.html">Privacidade</a>
-        <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo" class="btn-download">Baixar</a>
-    </div>
+        <a href="index.html" class="logo">JUSTO</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="calculadora.html" class="menu-selected">Calculadora</a>
+            <a href="privacy.html">Privacidade</a>
+            <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo" class="btn-baixar">Baixar App</a>
+        </div>
     </nav>
 
-    <div class="container">
+    <main class="container">
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3294798474176428" data-ad-slot="5453850309" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-        <div class="card">
+        <div class="plan-card" style="margin-top: 30px;">
             <h2>Custos Operacionais</h2>
-            <p class="sub-header">Ajuste os valores para o seu App Justo.</p>
+            <p class="sub-header">Descubra seu custo real e configure seu App Justo para trabalhar com inteligência.</p>
 
             <div class="toggle-container">
                 <button id="btn-alugado" class="toggle-btn active" onclick="setMode('alugado')">Carro Alugado</button>
@@ -57,70 +55,77 @@
                 <div class="form-group">
                     <label>⏲️ KM Rodado/Dia</label>
                     <div class="input-wrapper"><input type="number" id="km-dia" value="200"><span class="unit">km</span></div>
-                    <span class="tip">Quanto você roda por dia.</span>
                 </div>
                 <div class="form-group">
                     <label>⌛ Horas Online/Dia</label>
                     <div class="input-wrapper"><input type="number" id="horas-dia" value="12"><span class="unit">h</span></div>
-                    <span class="tip">Tempo disponível nos apps.</span>
                 </div>
                 <div class="form-group">
                     <label>⛽ Preço Combustível</label>
                     <div class="input-wrapper"><input type="number" id="p-comb" value="5.79" step="0.01"><span class="unit">R$/L</span></div>
-                    <span class="tip">Valor pago no litro/m³.</span>
                 </div>
                 <div class="form-group">
-                    <label>🚗 Consumo</label>
+                    <label>🚗 Consumo Média</label>
                     <div class="input-wrapper"><input type="number" id="consumo" value="10"><span class="unit">km/L</span></div>
-                    <span class="tip">Média de consumo urbano.</span>
                 </div>
 
                 <div id="sec-alugado" class="grid-campos full-width">
                     <div class="form-group">
-                        <label>📋 Aluguel Semanal</label>
+                        <label>📋 Valor Aluguel Semanal</label>
                         <div class="input-wrapper"><input type="number" id="aluguel-v" value="600"><span class="unit">R$</span></div>
                     </div>
                     <div class="form-group">
-                        <label>📅 Dias Trab/Sem</label>
-                        <input type="number" id="dias-semana-a" value="6">
+                        <label>📅 Dias Trabalhados/Sem</label>
+                        <div class="input-wrapper"><input type="number" id="dias-semana-a" value="6"><span class="unit">dias</span></div>
                     </div>
                 </div>
 
                 <div id="sec-proprio" class="grid-campos full-width" style="display: none;">
-                    <div class="form-group"><label>📋 Prestação</label><input type="number" id="prestacao" value="400"></div>
-                    <div class="form-group"><label>🛡️ Seguro Mensal</label><input type="number" id="seguro" value="250"></div>
-                    <div class="form-group"><label>⚙️ IPVA Mensal</label><input type="number" id="ipva" value="150"></div>
-                    <div class="form-group"><label>🔧 Manutenção</label><input type="number" id="manut-v" value="200"></div>
-                    <div class="form-group"><label>📅 Dias/Mês</label><input type="number" id="dias-mes-p" value="24"></div>
+                    <div class="form-group"><label>📋 Parcela Carro</label><div class="input-wrapper"><input type="number" id="prestacao" value="400"></div></div>
+                    <div class="form-group"><label>🛡️ Seguro/Mês</label><div class="input-wrapper"><input type="number" id="seguro" value="250"></div></div>
+                    <div class="form-group"><label>⚙️ IPVA/Mês</label><div class="input-wrapper"><input type="number" id="ipva" value="150"></div></div>
+                    <div class="form-group"><label>🔧 Manutenção/Mês</label><div class="input-wrapper"><input type="number" id="manut-v" value="200"></div></div>
+                    <div class="form-group full-width"><label>📅 Dias Trabalhados no Mês</label><div class="input-wrapper"><input type="number" id="dias-mes-p" value="24"></div></div>
                 </div>
 
                 <div class="form-group full-width">
-                    <label>🥪 Alimentação + Celular</label>
+                    <label>🥪 Alimentação + Celular + Internet</label>
                     <div class="input-wrapper"><input type="number" id="extra-mes" value="300"><span class="unit">R$/mês</span></div>
-                    <span class="tip">Gastos mensais extras de trabalho.</span>
+                    <span class="tip">Gastos mensais fixos com o trabalho.</span>
                 </div>
             </div>
 
-            <button class="btn-calcular" onclick="calcular()">Calcular Agora</button>
+            <button class="btn-calcular" onclick="calcular()">CALCULAR AGORA</button>
 
             <div id="resultado" class="resultado-box">
                 <div class="res-grid">
-                    <div><span class="res-label">Custo KM</span><span class="res-val" id="res-km">R$ 0,00</span></div>
-                    <div><span class="res-label">Custo Hora</span><span class="res-val" id="res-hora">R$ 0,00</span></div>
+                    <div>
+                        <span class="res-label">Custo por KM</span>
+                        <span class="res-val" id="res-km">R$ 0,00</span>
+                    </div>
+                    <div>
+                        <span class="res-label">Custo por Hora</span>
+                        <span class="res-val" id="res-hora">R$ 0,00</span>
+                    </div>
                 </div>
 
-                <div id="cta-app" class="cta-app">
-                    <span class="cta-text">Não perca dinheiro, trabalhe pelo Justo!</span>
-                    <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo" class="btn-app" target="_blank">📲 BAIXAR APP AGORA</a>
+                <div id="cta-app" class="cta-app" style="text-align: center;">
+                    <p style="margin-bottom: 10px;">Configure esses valores no seu App Justo para o lucro real.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo" class="btn-baixar" style="text-decoration: none; display: inline-block;">📲 BAIXAR APP JUSTO</a>
                 </div>
             </div>
         </div>
 
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3294798474176428" data-ad-slot="5453850309" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <ins class="adsbygoogle" style="display:block; margin-top: 40px;" data-ad-client="ca-pub-3294798474176428" data-ad-slot="5453850309" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+    </main>
+
+    <footer style="padding: 40px; text-align: center; color: var(--cinza); border-top: 1px solid #333; margin-top: 50px;">
+        <p>&copy; 2026 Justo Ganhos e Custos - Desenvolvido por ERSOFT</p>
+    </footer>
 
     <script>
+        // Mantive sua lógica original de cálculo intacta
         function setMode(modo) {
             const secAlugado = document.getElementById('sec-alugado');
             const secProprio = document.getElementById('sec-proprio');
@@ -170,8 +175,7 @@
             document.getElementById('res-hora').innerText = "R$ " + cHora.toFixed(2).replace('.', ',');
             
             document.getElementById('resultado').style.display = 'block';
-            document.getElementById('cta-app').style.display = 'block';
-
+            
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
     </script>
