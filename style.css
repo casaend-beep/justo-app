@@ -23,24 +23,36 @@ body {
 }
 
 /* Navbar */
+/* Ajuste na Navbar Principal */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
-    background: rgba(26, 26, 26, 0.95);
-    border-bottom: 1px solid #333;
+    padding: 15px 4%;
+    background: #121212;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Reduzi de 15px para 12px fixo */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+.nav-links a:hover { color: var(--verde-justo); }
 
 .logo { font-size: 1.5rem; font-weight: 800; color: var(--verde-justo); text-decoration: none; letter-spacing: -1px; }
 
-.nav-links a { color: var(--texto); text-decoration: none; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
-.nav-links a:hover { color: var(--verde-justo); }
-
 .btn-baixar { background: var(--verde-justo); color: #000 !important; padding: 8px 18px; border-radius: 8px; font-weight: bold; }
+
 .menu-active{ color: var(--dourado-pro) !important;}
 
 /* Hero Section */
@@ -257,5 +269,39 @@ body {
         padding: 8px 12px !important; /* Botão mais compacto no mobile */
         font-size: 0.8rem !important;
         white-space: nowrap; /* Garante que o texto do botão não quebre */
+    }
+}
+
+/* --- AJUSTE ESPECÍFICO PARA MOBILE (XIAOMI/ANDROID) --- */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 2%; /* Margem mínima nas laterais */
+    }
+
+    .logo {
+        font-size: 1.1rem; /* Logo um pouco menor */
+        margin-right: 5px;
+    }
+
+    .nav-links {
+        gap: 6px; /* Espaço mínimo entre os links */
+    }
+
+    .nav-links a {
+        font-size: 0.8rem; /* Fonte menor para caber tudo */
+        letter-spacing: -0.3px; /* Aproxima as letras levemente */
+    }
+
+    /* Força o botão a não quebrar de jeito nenhum */
+    .btn-baixar, .btn-download {
+        padding: 6px 10px !important;
+        font-size: 0.75rem !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+
+    /* Se o nome for muito grande, vamos esconder o "App" */
+    .btn-baixar::after {
+        content: ""; /* Mantém o botão limpo */
     }
 }
