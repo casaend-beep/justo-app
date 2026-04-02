@@ -326,7 +326,7 @@ body {
     }
 
     .nav-links a {
-        font-size: 0.8rem; /* Fonte menor para caber tudo */
+        font-size: 1rem; /* Fonte menor para caber tudo */
         letter-spacing: -0.3px; /* Aproxima as letras levemente */
     }
 
