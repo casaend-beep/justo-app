@@ -123,7 +123,7 @@
 
             <button class="btn-calcular" onclick="calcular()">CALCULAR AGORA</button>
 
-            <div id="resultado" class="resultado-box">
+            <div id="resultado" class="resultado-box" id="ancora-resultado">
                 <div class="res-grid">
                     <div><span class="res-label">Custo por KM</span><span class="res-val" id="res-km">R$ 0,00</span></div>
                     <div><span class="res-label">Custo por Hora</span><span class="res-val" id="res-hora">R$ 0,00</span></div>
@@ -188,7 +188,11 @@
             document.getElementById('res-km').innerText = "R$ " + cKm.toFixed(2).replace('.', ',');
             document.getElementById('res-hora').innerText = "R$ " + cHora.toFixed(2).replace('.', ',');
             document.getElementById('resultado').style.display = 'block';
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.style.display = 'block';
+
+            // Scroll suave para o início da caixa de resultado
+            resultadoDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     </script>
 </body>
