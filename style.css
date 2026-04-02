@@ -49,7 +49,38 @@ body {
 }
 .nav-links a:hover { color: var(--verde-justo); }
 
-.logo { font-size: 1.5rem; font-weight: 800; color: var(--verde-justo); text-decoration: none; letter-spacing: -1px; }
+/* Configuração da Logo com Ícone via CSS */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Espaço entre o ícone e o texto JUSTO */
+    text-decoration: none;
+    color: var(--verde-justo); /* Mantendo a cor verde neon */
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+/* Criando o container do ícone usando o Favicon */
+.logo::before {
+    content: "";
+    width: 32px;  /* Tamanho ideal para a navbar no desktop */
+    height: 32px;
+    
+    /* Link para a imagem do seu favicon (512x512) */
+    background-image: url('favicon.png'); 
+    
+    /* Garante que a imagem preencha o quadrado sem cortar */
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* Opcional: cantos arredondados para combinar com o design */
+    border-radius: 8px; 
+    
+    display: inline-block;
+}
 
 .btn-baixar { background: var(--verde-justo); color: #000 !important; padding: 8px 18px; border-radius: 8px; font-weight: bold; }
 
@@ -279,12 +310,19 @@ body {
     }
 
     .logo {
-        font-size: 1.1rem; /* Logo um pouco menor */
-        margin-right: 5px;
+        font-size: 1.1rem; /* Texto menor para caber tudo */
+        gap: 8px;
+    }
+    
+    .logo::before {
+        width: 24px;  /* Ícone menor no mobile */
+        height: 24px;
+        border-radius: 6px;
     }
 
+    /* Ajuste fino no espaçamento dos links para não quebrar no Xiaomi */
     .nav-links {
-        gap: 6px; /* Espaço mínimo entre os links */
+        gap: 6px !important;
     }
 
     .nav-links a {
