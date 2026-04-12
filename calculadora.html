@@ -36,30 +36,30 @@
     </nav>
 
     <main class="container">
-    <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background-color: #ffffff; border: 1px solid #e1e4e8; border-radius: 12px; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 750px; margin: 20px auto; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">  
-    <div style="display: flex; align-items: center; gap: 16px;">
-        <img src="favicon.png" alt="Logo App Justo" style="width: 40px; height: 40px; border-radius: 8px; object-fit: contain;">
-        
-        <div>
-            <h4 style="margin: 0; color: #1f2328; font-size: 15px; font-weight: 600; letter-spacing: -0.2px;">App Justo</h4>
-            <p style="margin: 2px 0 0; color: #57606a; font-size: 13px; line-height: 1.4;">Cálculo automático de ganhos via OCR no seu celular.</p>
-        </div>
-    </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background-color: #ffffff; border: 1px solid #e1e4e8; border-radius: 12px; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 750px; margin: 20px auto; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">  
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <img src="favicon.png" alt="Logo App Justo" style="width: 40px; height: 40px; border-radius: 8px; object-fit: contain;">
+                <div>
+                    <h4 style="margin: 0; color: #1f2328; font-size: 15px; font-weight: 600; letter-spacing: -0.2px;">App Justo</h4>
+                    <p style="margin: 2px 0 0; color: #57606a; font-size: 13px; line-height: 1.4;">Cálculo automático de ganhos via OCR no seu celular.</p>
+                </div>
+            </div>
 
-    <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo" target="_blank" style="text-decoration: none; display: inline-block;">
-        <svg width="135" height="40" viewBox="0 0 135 40">
-            <rect width="135" height="40" rx="6" fill="#000000"/>
-            <g transform="translate(12, 8) scale(0.6)">
-                <path fill="#4db6ac" d="M11.6 44.8l26.2-22.7L11.6.8v44z"/>
-                <path fill="#dce775" d="M11.6.8l35 21.3-8.8 8.8L11.6.8z"/>
-                <path fill="#f06292" d="M46.6 22.1l11.4 6.5c1.8 1.1 1.8 2.8 0 3.8l-11.4 6.5-7.8-7.8 7.8-9z"/>
-                <path fill="#ffd54f" d="M37.8 30.9l-26.2 13.9 35-22.7-8.8 8.8z"/>
-            </g>
-            <text x="44" y="16" fill="#ffffff" font-family="Roboto, sans-serif" font-size="8" font-weight="500">DISPONÍVEL NO</text>
-            <text x="44" y="32" fill="#ffffff" font-family="Roboto, sans-serif" font-size="14" font-weight="700">Google Play</text>
-        </svg>
-    </a>
-</div>
+            <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo" target="_blank" style="text-decoration: none; display: inline-block;">
+                <svg width="135" height="40" viewBox="0 0 135 40">
+                    <rect width="135" height="40" rx="6" fill="#000000"/>
+                    <g transform="translate(12, 8) scale(0.6)">
+                        <path fill="#4db6ac" d="M11.6 44.8l26.2-22.7L11.6.8v44z"/>
+                        <path fill="#dce775" d="M11.6.8l35 21.3-8.8 8.8L11.6.8z"/>
+                        <path fill="#f06292" d="M46.6 22.1l11.4 6.5c1.8 1.1 1.8 2.8 0 3.8l-11.4 6.5-7.8-7.8 7.8-9z"/>
+                        <path fill="#ffd54f" d="M37.8 30.9l-26.2 13.9 35-22.7-8.8 8.8z"/>
+                    </g>
+                    <text x="44" y="16" fill="#ffffff" font-family="Roboto, sans-serif" font-size="8" font-weight="500">DISPONÍVEL NO</text>
+                    <text x="44" y="32" fill="#ffffff" font-family="Roboto, sans-serif" font-size="14" font-weight="700">Google Play</text>
+                </svg>
+            </a>
+        </div>
+
         <div class="plan-card" style="margin-top: 30px;">
             <h2>Calculadora de Custos Operacionais</h2>
             <p class="sub-header">Ajuste os valores para configurar seu <strong>Lucro Real</strong> no App Justo.</p>
@@ -139,49 +139,46 @@
                 </div>
             </div>
 
-            <button id="ancora-resultado" class="btn-calcular" onclick="calcular()">CALCULAR AGORA</button>
+            <button class="btn-calcular" onclick="calcular()">CALCULAR AGORA</button>
 
-            <div id="resultado" class="resultado-box" id="ancora-resultado">
+            <div id="resultado" class="resultado-box" style="display: none;">
                 <div class="res-grid">
                     <div><span class="res-label">Custo por KM</span><span class="res-val" id="res-km">R$ 0,00</span></div>
                     <div><span class="res-label">Custo por Hora</span><span class="res-val" id="res-hora">R$ 0,00</span></div>
                 </div>
 
-                <div id="cta-app" class="cta-app" style="text-align: center;">
-                    <p style="margin-bottom: 15px; color: var(--cinza);">Evite prejuízos na Uber e 99: use esses valores no seu Justo.</p>
-                    <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo" class="btn-baixar" style="text-decoration: none; display: inline-block;">📲 BAIXAR APP JUSTO</a>
+                <div id="cta-app" class="cta-app" style="text-align: center; margin-top: 20px;">
+                    <p style="margin-bottom: 15px; color: #57606a;">Evite prejuízos na Uber e 99: use esses valores no seu Justo.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo" class="btn-baixar" style="text-decoration: none; display: inline-block; background-color: #2ecc71; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold;">📲 BAIXAR APP JUSTO</a>
                 </div>
             </div>
         </div>
 
-        <div style="padding: 24px; background: linear-gradient(135deg, #121212 0%, #2a2a2a 100%); border: 1px solid #3a3a3a; border-radius: 20px; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 320px; text-align: center; color: #ffffff; margin: 30px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.15);">
-    
-    <div style="padding: 24px; background: linear-gradient(135deg, #121212 0%, #2a2a2a 100%); border: 1px solid #3a3a3a; border-radius: 20px; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 320px; text-align: center; color: #ffffff; margin: 30px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.15);">
-    
-    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-        <img src="favicon.png" alt="Logo App Justo" style="width: 60px; height: 60px; border-radius: 12px; object-fit: contain; box-shadow: 0 3px 6px rgba(0,0,0,0.2);">
-    </div>
+        <div style="padding: 24px; background: linear-gradient(135deg, #121212 0%, #2a2a2a 100%); border: 1px solid #3a3a3a; border-radius: 20px; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 320px; text-align: center; color: #ffffff; margin: 40px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.15);">
+            <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                <img src="favicon.png" alt="Logo App Justo" style="width: 60px; height: 60px; border-radius: 12px; object-fit: contain; box-shadow: 0 3px 6px rgba(0,0,0,0.2);">
+            </div>
 
-    <h3 style="margin: 0 0 8px 0; font-size: 19px; font-weight: 700; letter-spacing: -0.3px; color: #ffffff;">Pare de fazer contas!</h3>
-    <p style="margin: 0 0 24px 0; font-size: 14px; color: #b0b0b0; line-height: 1.5; font-weight: 400;">Deixe o App Justo calcular seus ganhos reais e custos automaticamente.</p>
-    
-    <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo" target="_blank" style="text-decoration: none; display: inline-block;">
-        <svg width="150" height="44" viewBox="0 0 135 40">
-            <rect width="135" height="40" rx="6" fill="#000000" stroke="#555555" stroke-width="0.5"/>
-            <g transform="translate(12, 8) scale(0.6)">
-                <path fill="#4db6ac" d="M11.6 44.8l26.2-22.7L11.6.8v44z"/>
-                <path fill="#dce775" d="M11.6.8l35 21.3-8.8 8.8L11.6.8z"/>
-                <path fill="#f06292" d="M46.6 22.1l11.4 6.5c1.8 1.1 1.8 2.8 0 3.8l-11.4 6.5-7.8-7.8 7.8-9z"/>
-                <path fill="#ffd54f" d="M37.8 30.9l-26.2 13.9 35-22.7-8.8 8.8z"/>
-            </g>
-            <text x="44" y="16" fill="#ffffff" font-family="Roboto, sans-serif" font-size="8" font-weight="500">BAIXAR NO</text>
-            <text x="44" y="32" fill="#ffffff" font-family="Roboto, sans-serif" font-size="14" font-weight="700">Google Play</text>
-        </svg>
-    </a>
-</div>
+            <h3 style="margin: 0 0 8px 0; font-size: 19px; font-weight: 700; letter-spacing: -0.3px; color: #ffffff;">Pare de fazer contas!</h3>
+            <p style="margin: 0 0 24px 0; font-size: 14px; color: #b0b0b0; line-height: 1.5; font-weight: 400;">Deixe o App Justo calcular seus ganhos reais e custos automaticamente.</p>
+            
+            <a href="https://play.google.com/store/apps/details?id=com.ersoft.justo" target="_blank" style="text-decoration: none; display: inline-block;">
+                <svg width="150" height="44" viewBox="0 0 135 40">
+                    <rect width="135" height="40" rx="6" fill="#000000" stroke="#555555" stroke-width="0.5"/>
+                    <g transform="translate(12, 8) scale(0.6)">
+                        <path fill="#4db6ac" d="M11.6 44.8l26.2-22.7L11.6.8v44z"/>
+                        <path fill="#dce775" d="M11.6.8l35 21.3-8.8 8.8L11.6.8z"/>
+                        <path fill="#f06292" d="M46.6 22.1l11.4 6.5c1.8 1.1 1.8 2.8 0 3.8l-11.4 6.5-7.8-7.8 7.8-9z"/>
+                        <path fill="#ffd54f" d="M37.8 30.9l-26.2 13.9 35-22.7-8.8 8.8z"/>
+                    </g>
+                    <text x="44" y="16" fill="#ffffff" font-family="Roboto, sans-serif" font-size="8" font-weight="500">BAIXAR NO</text>
+                    <text x="44" y="32" fill="#ffffff" font-family="Roboto, sans-serif" font-size="14" font-weight="700">Google Play</text>
+                </svg>
+            </a>
+        </div>
     </main>
 
-    <footer style="padding: 40px; text-align: center; color: var(--cinza); border-top: 1px solid #333; margin-top: 50px;">
+    <footer style="padding: 40px; text-align: center; color: #57606a; border-top: 1px solid #333; margin-top: 50px;">
         <p>&copy; 2026 Justo Ganhos e Custos - Desenvolvido por ERSOFT</p>
     </footer>
 
@@ -213,6 +210,7 @@
             const modo = document.getElementById('btn-alugado').classList.contains('active') ? 'alugado' : 'proprio';
             let custoFixoDiario = 0;
             let cKm = pComb / cons;
+            
             if (modo === 'alugado') {
                 const vAlug = parseFloat(document.getElementById('aluguel-v').value) || 0;
                 const dSem = parseFloat(document.getElementById('dias-semana-a').value) || 1;
@@ -225,11 +223,12 @@
                 const dMes = parseFloat(document.getElementById('dias-mes-p').value) || 1;
                 custoFixoDiario = (prest + seg + ipva + manut + extraMes) / dMes;
             }
+            
             const cHora = custoFixoDiario / hDia;
             document.getElementById('res-km').innerText = "R$ " + cKm.toFixed(2).replace('.', ',');
             document.getElementById('res-hora').innerText = "R$ " + cHora.toFixed(2).replace('.', ',');
-            document.getElementById('resultado').style.display = 'block';
-            const resultadoDiv = document.getElementById('ancora-resultado');
+            
+            const resultadoDiv = document.getElementById('resultado');
             resultadoDiv.style.display = 'block';
 
             // Scroll suave para o início da caixa de resultado
